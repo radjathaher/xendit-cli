@@ -78,7 +78,7 @@ cargo build
 
 ## Notes
 
-- If the default Postman URL 404s, set `XENDIT_SPEC_URL` to a current spec URL.
+- `tools/fetch_spec.py` scrapes the docs page for a signed Postman URL; override with `XENDIT_DOCS_URL` or `XENDIT_SPEC_URL` if needed.
 - `schemas/xendit.openapi.json` is a minimal bootstrap spec (GET /balance).
 - `--raw` includes status + headers.
 - `--body` supports `@file.json` for large payloads.

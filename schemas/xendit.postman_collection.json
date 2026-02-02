@@ -1,0 +1,888 @@
+{
+	"info": {
+		"_postman_id": "dc4b4aab-ad25-40f5-8c18-25bb2c29db1a",
+		"name": "Payments API v3 Master Collection",
+		"description": "# Prerequisites\n\nBefore using this Postman collection, ensure you have completed the following steps:\n\n1. **Register for an account** on the Xendit dashboard.\n    \n2. **Generate an API key** in **Test mode** for testing purposes.\n    \n\nRefer to the following guides for detailed instructions:\n\n- [How to generate an API key](https://xendit-docs.document360.io/docs/create-an-api-key)\n    \n- [How to register a webhook callback URL](https://xendit-docs.document360.io/docs/set-up-webhooks)\n    \n\nThis Postman collection is designed to help you quickly get started with Xendit’s API and covers common integration scenarios. For a comprehensive list of features, refer to our documentation:\n\n- [Integration guide](https://xendit-docs.document360.io/docs/payments-via-api-overview)\n    \n- [API reference](https://xendit-docs.document360.io/apidocs/introduction)\n    \n\n---\n\n# Set Up Postman Environment\n\nTo use this collection, configure your Postman environment with the following variable:\n\n| Variable Name | Value |\n| --- | --- |\n| `api-key` | `xnd_development_**\\*` (Generated from the dashboard) |\n\nFor general guidance on setting up environment variables in Postman, refer to [Postman’s documentation](https://learning.postman.com/docs/sending-requests/variables/environment-variables/).",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "10007895",
+		"_collection_link": "https://toxicapiteam.postman.co/workspace/Payments-API-v3~2c8372c0-1d55-4832-af90-a9d4a1e3f1fa/collection/38368413-dc4b4aab-ad25-40f5-8c18-25bb2c29db1a?action=share&source=collection_link&creator=10007895"
+	},
+	"item": [
+		{
+			"name": "Payment Request",
+			"item": [
+				{
+					"name": "Reusable Payment Code",
+					"item": [
+						{
+							"name": "Create Reusable Payment Code with no amount",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "api-version",
+										"value": "2024-11-11",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"reference_id\": \"test-{{$timestamp}}\",\n    \"type\": \"REUSABLE_PAYMENT_CODE\",\n    \"country\": \"ID\",\n    \"currency\": \"IDR\",\n    \"channel_code\": \"QRIS\",\n    \"channel_properties\": {\n        \"display_name\": \"Money_Badger\"    \n        }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.xendit.co/v3/payment_requests",
+									"protocol": "https",
+									"host": [
+										"api",
+										"xendit",
+										"co"
+									],
+									"path": [
+										"v3",
+										"payment_requests"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Reusable Payment Code with amount",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "api-version",
+										"value": "2024-11-11",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"reference_id\": \"test-{{$timestamp}}\",\n    \"type\": \"REUSABLE_PAYMENT_CODE\",\n    \"country\": \"ID\",\n    \"currency\": \"IDR\",\n    \"channel_code\": \"BNI_VIRTUAL_ACCOUNT\",\n    \"request_amount\": 10000,\n    \"channel_properties\": {\n        \"display_name\": \"Money_Badger\",\n        \"virtual_account_number\":\"999900000055\"    \n        }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.xendit.co/v3/payment_requests",
+									"protocol": "https",
+									"host": [
+										"api",
+										"xendit",
+										"co"
+									],
+									"path": [
+										"v3",
+										"payment_requests"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "See documentation here [https://xendit-docs.document360.io/docs/reusable-payment-codes](https://xendit-docs.document360.io/docs/reusable-payment-codes)"
+				},
+				{
+					"name": "Pay",
+					"item": [
+						{
+							"name": "Present to Customer",
+							"item": [
+								{
+									"name": "Create one-off payment with no specific payment code",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "api-version",
+												"value": "2024-11-11",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"reference_id\": \"test-{{$timestamp}}\",\n    \"type\": \"PAY\",\n    \"country\": \"ID\",\n    \"currency\": \"IDR\",\n    \"request_amount\": 10000,\n    \"metadata\": { \"my_custom_id\": \"merchant-123\", \"\": 1 },\n\n    \"channel_code\": \"BNI_VIRTUAL_ACCOUNT\",\n    \"channel_properties\": {\n       \"display_name\": \"John Doe\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api.xendit.co/v3/payment_requests",
+											"protocol": "https",
+											"host": [
+												"api",
+												"xendit",
+												"co"
+											],
+											"path": [
+												"v3",
+												"payment_requests"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create one-off payment with specific payment code",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "api-version",
+												"value": "2024-11-11",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"reference_id\": \"test-{{$timestamp}}\",\n    \"type\": \"PAY\",\n    \"country\": \"ID\",\n    \"currency\": \"IDR\",\n    \"request_amount\": 13000,\n    \"channel_code\": \"BNI_VIRTUAL_ACCOUNT\",\n    \"channel_properties\": {\n        \"display_name\": \"mySellerName\",\n        \"virtual_account_number\" : \"880810000001\"\n        // this virtual_account_number is specific to your account, please do not use the default shown above\n        // please check Xendit dashboard > settings > payment methods and find the corresponding channel code for more information\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api.xendit.co/v3/payment_requests?api-version=2024-11-11",
+											"protocol": "https",
+											"host": [
+												"api",
+												"xendit",
+												"co"
+											],
+											"path": [
+												"v3",
+												"payment_requests"
+											],
+											"query": [
+												{
+													"key": "api-version",
+													"value": "2024-11-11"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Redirect Customer",
+							"item": [
+								{
+									"name": "Create one-off payment with customer object",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "api-version",
+												"value": "2024-11-11",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"reference_id\": \"test-{{$timestamp}}\",\n    \"type\": \"PAY\",\n    \"country\": \"VN\",\n    \"currency\": \"VND\",\n    \"request_amount\": 10300,\n    \"customer\":\n       {\n        \"reference_id\": \"{{$randomUUID}}\",\n        \"type\": \"INDIVIDUAL\",\n        \"email\": \"john@example.com\",\n        \"mobile_number\": \"+639178134356\",\n        \"phone_number\": \"+639178134356\",\n        \"individual_detail\": {\n            \"given_names\": \"John\",\n            \"surname\": \"Doe\"\n            } \n       },\n    \"channel_code\": \"APPOTA\",\n    \"channel_properties\": {\n        \"account_mobile_number\": \"+6385706976963\",\n        \"success_return_url\": \"https://xendit.co/success\",\n        \"failure_return_url\": \"https://xendit.co/failure\",\n        \"pending_return_url\": \"https://xendit.co/pending\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api.xendit.co/v3/payment_requests",
+											"protocol": "https",
+											"host": [
+												"api",
+												"xendit",
+												"co"
+											],
+											"path": [
+												"v3",
+												"payment_requests"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Create guest-checkout",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "api-version",
+												"value": "2024-11-11",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"reference_id\": \"test-{{$timestamp}}\",\n    \"type\": \"PAY\",\n    \"country\": \"ID\",\n    \"currency\": \"IDR\",\n    \"request_amount\": 10000,\n    // magic number from https://xendit-docs.document360.io/docs/simulate-error-scenarios\n    \"channel_code\": \"DANA\",\n    \"channel_properties\": {\n        \"account_mobile_number\": \"+6285706976963\",\n        \"success_return_url\": \"https://xendit.co/success\",\n        \"failure_return_url\": \"https://xendit.co/failure\"\n    }\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://api.xendit.co/v3/payment_requests",
+											"protocol": "https",
+											"host": [
+												"api",
+												"xendit",
+												"co"
+											],
+											"path": [
+												"v3",
+												"payment_requests"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Create with Card full PAN",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "api-version",
+										"value": "2024-11-11",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "        // only available for PCI DSS certified systems that has been validated by Xendit\n{\n    \"reference_id\": \"test-{{$timestamp}}\",\n    \"type\": \"PAY\",\n    \"country\": \"ID\",\n    \"currency\": \"IDR\",\n    \"request_amount\": 10000,\n    \"channel_code\": \"CARDS\",\n    \"channel_properties\": {\n        \"card_details\": {\n            \"card_number\": \"4000000000001091\",\n            \"expiry_month\": \"12\",\n            \"expiry_year\": \"2027\",\n            \"cvn\": \"123\",\n            \"cardholder_first_name\": \"John\",\n            \"cardholder_last_name\": \"Doe\",\n            \"cardholder_email\": \"john@example.com\",\n            \"cardholder_phone_number\": \"+661234567890\"\n        },\n        \"success_return_url\": \"https://www.xendit.co/success\",\n        \"failure_return_url\": \"https://www.xendit.co/failure\"\n    },\n    \"metadata\": {\n        \"hello\": \"world\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.xendit.co/v3/payment_requests",
+									"protocol": "https",
+									"host": [
+										"api",
+										"xendit",
+										"co"
+									],
+									"path": [
+										"v3",
+										"payment_requests"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "See documentation here [https://xendit-docs.document360.io/docs/pay-one-off-payment](https://xendit-docs.document360.io/docs/pay-one-off-payment)"
+				},
+				{
+					"name": "Pay and Save",
+					"item": [
+						{
+							"name": "Create pay and save",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "api-version",
+										"value": "2024-11-11",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"reference_id\": \"test-{{$timestamp}}\",\n    \"type\": \"PAY_AND_SAVE\",\n    \"country\": \"ID\",\n    \"currency\": \"IDR\",\n    \"request_amount\": 13579,\n    // Skip user auth flow magic number scenario\n    \"channel_code\": \"DANA\",\n    \"customer\":\n       {\n        \"reference_id\": \"{{$randomUUID}}\",\n        \"type\": \"INDIVIDUAL\",\n        \"email\": \"john@example.com\",\n        \"mobile_number\": \"+639178134356\",\n        \"phone_number\": \"+639178134356\",\n        \"individual_detail\": {\n            \"given_names\": \"John\",\n            \"surname\": \"Doe\"\n            } \n       },\n    \"channel_properties\": {\n        \"success_return_url\": \"https://xendit.co/success\",\n        \"failure_return_url\": \"https://xendit.co/failure\"\n\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.xendit.co/v3/payment_requests",
+									"protocol": "https",
+									"host": [
+										"api",
+										"xendit",
+										"co"
+									],
+									"path": [
+										"v3",
+										"payment_requests"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "See documentation here [https://xendit-docs.document360.io/docs/pay-and-save](https://xendit-docs.document360.io/docs/pay-and-save)"
+				},
+				{
+					"name": "Pay with Payment Token",
+					"item": [
+						{
+							"name": "Create pay with payment token",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "api-version",
+										"value": "2024-11-11",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    // \"country\": \"PH\",\n    // \"currency\": \"PHP\",\n    // \"request_amount\": 12003,\n    \"country\": \"MY\",\n    \"currency\": \"MYR\",\n    \"request_amount\": 300,\n    \"reference_id\": \"test-{{$timestamp}}\",\n    \"type\": \"PAY\",\n    \"payment_token_id\":\"pt-97ba7db7-c5a6-473e-82cc-7d2431f4417f\",\n    \"channel_properties\": {\n        \"success_return_url\": \"https://xendit.co/success\",\n        \"failure_return_url\": \"https://xendit.co/failure\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.xendit.co/v3/payment_requests",
+									"protocol": "https",
+									"host": [
+										"api",
+										"xendit",
+										"co"
+									],
+									"path": [
+										"v3",
+										"payment_requests"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"description": "See documentation here [https://xendit-docs.document360.io/docs/pay-with-tokens](https://xendit-docs.document360.io/docs/pay-with-tokens)"
+				},
+				{
+					"name": "Get Payment Request",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-version",
+								"value": "2024-11-11",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.xendit.co/v3/payment_requests/pr-5dbf0467-f371-43e0-a788-94b0272e2f82",
+							"protocol": "https",
+							"host": [
+								"api",
+								"xendit",
+								"co"
+							],
+							"path": [
+								"v3",
+								"payment_requests",
+								"pr-5dbf0467-f371-43e0-a788-94b0272e2f82"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cancel Payment Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-version",
+								"value": "2024-11-11",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.xendit.co/v3/payment_requests/pr-8bd76100-4dee-49e0-8836-773d099b630e/cancel",
+							"protocol": "https",
+							"host": [
+								"api",
+								"xendit",
+								"co"
+							],
+							"path": [
+								"v3",
+								"payment_requests",
+								"pr-8bd76100-4dee-49e0-8836-773d099b630e",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refund Payment Request",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"reference_id\": \"90392f42-d98a-49ef-a7f3-abcezas123\",\r\n  \"payment_request_id\": \"pr-90392f42-d98a-49ef-a7f3-abcezas123\",\r\n  \"currency\": \"IDR\",\r\n  \"amount\": 10000,\r\n  \"reason\": \"REQUESTED_BY_CUSTOMER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.xendit.co/refunds",
+							"protocol": "https",
+							"host": [
+								"api",
+								"xendit",
+								"co"
+							],
+							"path": [
+								"refunds"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment by Payment ID",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-version",
+								"value": "2024-11-11",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.xendit.co/v3/payments/py-bb322184-4bae-42ce-bacf-0f84049e046e",
+							"protocol": "https",
+							"host": [
+								"api",
+								"xendit",
+								"co"
+							],
+							"path": [
+								"v3",
+								"payments",
+								"py-bb322184-4bae-42ce-bacf-0f84049e046e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "[Test Mode] Simulate Payment",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-version",
+								"value": "2024-11-11",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"amount\":1000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.xendit.co/v3/payment_requests/pr-4f978be5-0e6a-4218-a281-155b362a9ffb/simulate",
+							"protocol": "https",
+							"host": [
+								"api",
+								"xendit",
+								"co"
+							],
+							"path": [
+								"v3",
+								"payment_requests",
+								"pr-4f978be5-0e6a-4218-a281-155b362a9ffb",
+								"simulate"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payment Token",
+			"item": [
+				{
+					"name": "Redirect Customer",
+					"item": [
+						{
+							"name": "Create Payment Token for new customer",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{api-key}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "api-version",
+										"value": "2024-11-11",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    // \"channel_code\": \"OVO\",\n    // \"country\": \"ID\",\n    // \"currency\": \"IDR\",\n    \"channel_code\": \"TOUCHNGO\",\n    \"country\": \"MY\",\n    \"currency\": \"MYR\",\n    \"customer\": {\n        \"reference_id\": \"test-{{$randomUUID}}\",\n        \"type\": \"INDIVIDUAL\",\n        \"email\": \"john@example.com\",\n        \"mobile_number\": \"+639178134356\",\n        \"phone_number\": \"+639178134356\",\n        \"individual_detail\": {\n            \"given_names\": \"John\",\n            \"surname\": \"Doe\"\n        }\n    },\n    \"reference_id\": \"{{$randomUUID}}\",\n    \"channel_properties\": {\n        \"success_return_url\": \"https://xendit.co/success\",\n        \"failure_return_url\": \"https://xendit.co/failure\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.xendit.co/v3/payment_tokens",
+									"protocol": "https",
+									"host": [
+										"api",
+										"xendit",
+										"co"
+									],
+									"path": [
+										"v3",
+										"payment_tokens"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Create Payment Token for existing customer",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "username",
+											"value": "{{api-key}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "api-version",
+										"value": "2024-11-11",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n  \"channel_code\": \"OVO\",\n  \"country\": \"ID\",\n  \"customer_id\":\"cust-42daa0a2-ee79-43eb-872b-d466a953f7c6\",\n  \"reference_id\": \"{{$randomUUID}}\",\n  \"currency\": \"IDR\",\n  \"channel_properties\": {\n        \"success_return_url\": \"https://xendit.co/success\",\n        \"failure_return_url\": \"https://xendit.co/failure\"\n  }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://api.xendit.co/v3/payment_tokens",
+									"protocol": "https",
+									"host": [
+										"api",
+										"xendit",
+										"co"
+									],
+									"path": [
+										"v3",
+										"payment_tokens"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "Cancel or Deactivate Payment Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{api-key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-version",
+								"value": "2024-11-11",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.xendit.co/v3/payment_tokens/pt-d7daeef6-3ad7-48cf-9bfe-56d579a9120d/cancel",
+							"protocol": "https",
+							"host": [
+								"api",
+								"xendit",
+								"co"
+							],
+							"path": [
+								"v3",
+								"payment_tokens",
+								"pt-d7daeef6-3ad7-48cf-9bfe-56d579a9120d",
+								"cancel"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment Token",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{api-key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-version",
+								"value": "2024-11-11",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.xendit.co/v3/payment_tokens/pt-97ba7db7-c5a6-473e-82cc-7d2431f4417f",
+							"protocol": "https",
+							"host": [
+								"api",
+								"xendit",
+								"co"
+							],
+							"path": [
+								"v3",
+								"payment_tokens",
+								"pt-97ba7db7-c5a6-473e-82cc-7d2431f4417f"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "See documentation here [https://xendit-docs.document360.io/docs/save-payment-information](https://xendit-docs.document360.io/docs/save-payment-information)"
+		},
+		{
+			"name": "Card-session-js",
+			"item": [
+				{
+					"name": "Create Payment Session",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"reference_id\": \"test-{{$randomUUID}}\",\n    \"customer\": {\n        \"reference_id\": \"test-{{$randomUUID}}\",\n        \"type\": \"INDIVIDUAL\",\n        \"email\": \"john@example.com\",\n        \"mobile_number\": \"+639178134356\",\n        \"phone_number\": \"+639178134356\",\n        \"individual_detail\": {\n            \"given_names\": \"John\",\n            \"surname\": \"Doe\"\n        }\n    },\n    \"session_type\": \"PAY\",\n    \"currency\": \"THB\",\n    \"amount\": 3000,\n    \"mode\": \"CARDS_SESSION_JS\",\n    \"country\": \"TH\",\n    \"channel_properties\": {\n        \"cards\": {\n            \"card_on_file_type\": \"CUSTOMER_UNSCHEDULED\"\n        }\n    },\n    \"cards_session_js\": {\n        \"card_payment_token_id\": \"pt-0f0b2325-59a4-4c3c-8e95-5846cd8ac4c3\",\n        // please set your own return URLs\n        \"success_return_url\": \"https://www.xendit.co/success\",\n        \"failure_return_url\": \"https://www.xendit.co/failure\"\n    },\n    \"locale\": \"en\",\n    \"description\": \"Clothes Purchase\",\n    // card_session.js demo page: https://js.xendit.co/test_collect_card_data.html\n    \"metadata\": {\n        \"hello\": \"world\"\n    }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.xendit.co/sessions",
+							"protocol": "https",
+							"host": [
+								"api",
+								"xendit",
+								"co"
+							],
+							"path": [
+								"sessions"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Payment Session",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://api.xendit.co/sessions/ps-67be7d58e12220efeea2e121",
+							"protocol": "https",
+							"host": [
+								"api",
+								"xendit",
+								"co"
+							],
+							"path": [
+								"sessions",
+								"ps-67be7d58e12220efeea2e121"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Installment Options",
+			"item": [
+				{
+					"name": "https://api.xendit.co/installment_options",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{api-key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    // \"channel_code\": \"BAY_CARD_INSTALLMENT\",\n    // \"channel_code\": \"BBL_CARD_INSTALLMENT\",\n    \"channel_code\": \"KBANK_CARD_INSTALLMENT\",\n    // \"channel_code\": \"KTB_CARD_INSTALLMENT\",\n    // \"channel_code\": \"SCB_CARD_INSTALLMENT\",\n    // \"channel_code\": \"TTB_CARD_INSTALLMENT\",\n    \"amount\": 10000,\n    \"currency\": \"THB\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.xendit.co/installment_options",
+							"protocol": "https",
+							"host": [
+								"api",
+								"xendit",
+								"co"
+							],
+							"path": [
+								"installment_options"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "https://api.xendit.co/v3/payment_requests",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "username",
+									"value": "{{api-key}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "api-version",
+								"value": "2024-11-11",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"reference_id\": \"f2b41e0b-4ca6-477d-8b11-fdd0b45d9d63\",\n  \"country\": \"TH\",\n  \"currency\": \"THB\",\n  \"type\": \"PAY\",\n  \"request_amount\": 1200,\n  \"channel_code\": \"KBANK_CARD_INSTALLMENT\",\n  \"channel_properties\": {\n    \"installment_configuration\": {\n      \"terms\": 3,\n      \"interval\": \"MONTH\"\n    },\n    \"failure_return_url\": \"https://redirect.me/badstuff\",\n    \"success_return_url\": \"https://redirect.me/goodstuff\",\n    \"statement_descriptor\": \"Goods and Services\"\n  },\n  \"description\": \"Papi Tester\",\n  \"metadata\": {\n    \"foo\": \"bar\"\n  }\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://api.xendit.co/v3/payment_requests",
+							"protocol": "https",
+							"host": [
+								"api",
+								"xendit",
+								"co"
+							],
+							"path": [
+								"v3",
+								"payment_requests"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "basic",
+		"basic": [
+			{
+				"key": "username",
+				"value": "{{api-key}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

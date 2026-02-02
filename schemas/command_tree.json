@@ -2,15 +2,205 @@
   "base_url": "https://api.xendit.co",
   "resources": [
     {
-      "name": "balance",
+      "name": "card-session-js",
       "ops": [
         {
-          "description": "Get balance",
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "create-payment-session",
+          "params": [],
+          "path": "/sessions"
+        },
+        {
+          "description": null,
           "has_body": false,
           "method": "GET",
-          "name": "get-balance",
+          "name": "get-payment-session",
           "params": [],
-          "path": "/balance"
+          "path": "/sessions/ps-67be7d58e12220efeea2e121"
+        }
+      ]
+    },
+    {
+      "name": "installment-options",
+      "ops": [
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "https-api-xendit-co-installment-options",
+          "params": [],
+          "path": "/installment_options"
+        },
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "https-api-xendit-co-v3-payment-requests",
+          "params": [],
+          "path": "/v3/payment_requests"
+        }
+      ]
+    },
+    {
+      "name": "payment-request",
+      "ops": [
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "create-reusable-payment-code-with-no-amount",
+          "params": [],
+          "path": "/v3/payment_requests"
+        },
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "create-reusable-payment-code-with-amount",
+          "params": [],
+          "path": "/v3/payment_requests"
+        },
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "create-one-off-payment-with-no-specific-payment-code",
+          "params": [],
+          "path": "/v3/payment_requests"
+        },
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "create-one-off-payment-with-specific-payment-code",
+          "params": [
+            {
+              "flag": "api-version",
+              "location": "query",
+              "name": "api-version",
+              "required": false
+            }
+          ],
+          "path": "/v3/payment_requests"
+        },
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "create-one-off-payment-with-customer-object",
+          "params": [],
+          "path": "/v3/payment_requests"
+        },
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "create-guest-checkout",
+          "params": [],
+          "path": "/v3/payment_requests"
+        },
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "create-with-card-full-pan",
+          "params": [],
+          "path": "/v3/payment_requests"
+        },
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "create-pay-and-save",
+          "params": [],
+          "path": "/v3/payment_requests"
+        },
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "create-pay-with-payment-token",
+          "params": [],
+          "path": "/v3/payment_requests"
+        },
+        {
+          "description": null,
+          "has_body": false,
+          "method": "GET",
+          "name": "get-payment-request",
+          "params": [],
+          "path": "/v3/payment_requests/pr-5dbf0467-f371-43e0-a788-94b0272e2f82"
+        },
+        {
+          "description": null,
+          "has_body": false,
+          "method": "POST",
+          "name": "cancel-payment-request",
+          "params": [],
+          "path": "/v3/payment_requests/pr-8bd76100-4dee-49e0-8836-773d099b630e/cancel"
+        },
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "refund-payment-request",
+          "params": [],
+          "path": "/refunds"
+        },
+        {
+          "description": null,
+          "has_body": false,
+          "method": "GET",
+          "name": "get-payment-by-payment-id",
+          "params": [],
+          "path": "/v3/payments/py-bb322184-4bae-42ce-bacf-0f84049e046e"
+        },
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "test-mode-simulate-payment",
+          "params": [],
+          "path": "/v3/payment_requests/pr-4f978be5-0e6a-4218-a281-155b362a9ffb/simulate"
+        }
+      ]
+    },
+    {
+      "name": "payment-token",
+      "ops": [
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "create-payment-token-for-new-customer",
+          "params": [],
+          "path": "/v3/payment_tokens"
+        },
+        {
+          "description": null,
+          "has_body": true,
+          "method": "POST",
+          "name": "create-payment-token-for-existing-customer",
+          "params": [],
+          "path": "/v3/payment_tokens"
+        },
+        {
+          "description": null,
+          "has_body": false,
+          "method": "POST",
+          "name": "cancel-or-deactivate-payment-token",
+          "params": [],
+          "path": "/v3/payment_tokens/pt-d7daeef6-3ad7-48cf-9bfe-56d579a9120d/cancel"
+        },
+        {
+          "description": null,
+          "has_body": false,
+          "method": "GET",
+          "name": "get-payment-token",
+          "params": [],
+          "path": "/v3/payment_tokens/pt-97ba7db7-c5a6-473e-82cc-7d2431f4417f"
         }
       ]
     }
