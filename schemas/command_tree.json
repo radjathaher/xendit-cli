@@ -2,34 +2,145 @@
   "base_url": "https://api.xendit.co",
   "resources": [
     {
+      "name": "account-holders",
+      "ops": [
+        {
+          "description": "Create account holder",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-account-holder",
+          "params": [],
+          "path": "/account_holders"
+        },
+        {
+          "description": "Get account holder",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-account-holder",
+          "params": [
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/account_holders/{id}"
+        },
+        {
+          "description": "Update account holder",
+          "has_body": true,
+          "method": "PATCH",
+          "name": "patch-update-account-holder",
+          "params": [
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/account_holders/{id}"
+        }
+      ]
+    },
+    {
       "name": "balance",
       "ops": [
         {
           "description": "Get balance",
           "has_body": false,
           "method": "GET",
-          "name": "get-balance",
+          "name": "get-get-balance",
+          "params": [],
+          "path": "/balance"
+        }
+      ]
+    },
+    {
+      "name": "bill-payments",
+      "ops": [
+        {
+          "description": "Create Inquiry",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-inquiry",
+          "params": [],
+          "path": "/bill-payments/v1/inquiry"
+        },
+        {
+          "description": "Create Payment",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-payment",
+          "params": [],
+          "path": "/bill-payments/v1/payment"
+        },
+        {
+          "description": "Get Payment Detail",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-payment-detail",
           "params": [
             {
-              "flag": "account-type",
-              "location": "query",
-              "name": "account_type",
-              "required": false
-            },
-            {
-              "flag": "at-timestamp",
-              "location": "query",
-              "name": "at_timestamp",
-              "required": false
-            },
-            {
-              "flag": "currency",
-              "location": "query",
-              "name": "currency",
-              "required": false
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
             }
           ],
-          "path": "/balance"
+          "path": "/bill-payments/v1/payment/{id}"
+        },
+        {
+          "description": "Get Product List",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-product-list",
+          "params": [],
+          "path": "/bill-payments/v1/product"
+        },
+        {
+          "description": "Get Product by ID",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-product-by-id",
+          "params": [
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/bill-payments/v1/product/{id}"
+        },
+        {
+          "description": "Payment Status Callback (Webhook)",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-payment-status-callback-webhook",
+          "params": [],
+          "path": "/bill-payments/your-callback-url"
+        }
+      ]
+    },
+    {
+      "name": "callback-urls",
+      "ops": [
+        {
+          "description": "Set webhook URL",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-set-webhook-url",
+          "params": [
+            {
+              "flag": "type",
+              "location": "path",
+              "name": "type",
+              "required": true
+            }
+          ],
+          "path": "/callback_urls/{type}"
         }
       ]
     },
@@ -55,6 +166,128 @@
       ]
     },
     {
+      "name": "cross-border-payout-webhook-url",
+      "ops": [
+        {
+          "description": "Cross-Border Payout Webhook",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-cross-border-payout-webhook-notification",
+          "params": [],
+          "path": "/cross_border_payout_webhook_url"
+        }
+      ]
+    },
+    {
+      "name": "customers",
+      "ops": [
+        {
+          "description": "Get customers list",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-customers-list",
+          "params": [],
+          "path": "/customers"
+        },
+        {
+          "description": "Create customer request",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-customer-request",
+          "params": [],
+          "path": "/customers"
+        },
+        {
+          "description": "Get customer by id",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-customer-id",
+          "params": [
+            {
+              "flag": "customer-id",
+              "location": "path",
+              "name": "customer_id",
+              "required": true
+            }
+          ],
+          "path": "/customers/{customer_id}"
+        },
+        {
+          "description": "Update Customer",
+          "has_body": true,
+          "method": "PATCH",
+          "name": "patch-update-customer",
+          "params": [
+            {
+              "flag": "customer-id",
+              "location": "path",
+              "name": "customer_id",
+              "required": true
+            }
+          ],
+          "path": "/customers/{customer_id}"
+        }
+      ]
+    },
+    {
+      "name": "files",
+      "ops": [
+        {
+          "description": "Upload file",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-upload-file",
+          "params": [],
+          "path": "/files"
+        },
+        {
+          "description": "Delete file by ID",
+          "has_body": false,
+          "method": "DELETE",
+          "name": "delete-delete-file-by-id",
+          "params": [
+            {
+              "flag": "file-id",
+              "location": "path",
+              "name": "file_id",
+              "required": true
+            }
+          ],
+          "path": "/files/{file_id}"
+        },
+        {
+          "description": "Get file by ID",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-file-by-id",
+          "params": [
+            {
+              "flag": "file-id",
+              "location": "path",
+              "name": "file_id",
+              "required": true
+            }
+          ],
+          "path": "/files/{file_id}"
+        },
+        {
+          "description": "Download file by ID",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-download-file-by-id",
+          "params": [
+            {
+              "flag": "file-id",
+              "location": "path",
+              "name": "file_id",
+              "required": true
+            }
+          ],
+          "path": "/files/{file_id}/download"
+        }
+      ]
+    },
+    {
       "name": "installment-options",
       "ops": [
         {
@@ -72,6 +305,26 @@
           "name": "https-api-xendit-co-v3-payment-requests",
           "params": [],
           "path": "/v3/payment_requests"
+        }
+      ]
+    },
+    {
+      "name": "merchant-defined-callback-url",
+      "ops": [
+        {
+          "description": "Create Subscription Plan",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-recurring-plan-2",
+          "params": [
+            {
+              "flag": "merchant-defined-callback-url",
+              "location": "path",
+              "name": "merchant defined callback url",
+              "required": true
+            }
+          ],
+          "path": "/{merchant defined callback url}"
         }
       ]
     },
@@ -158,112 +411,374 @@
       ]
     },
     {
+      "name": "payout-webhook-url",
+      "ops": [
+        {
+          "description": "Payout Webhook",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-payout-webhook-notification",
+          "params": [],
+          "path": "/payout_webhook_url"
+        }
+      ]
+    },
+    {
+      "name": "payouts-channels",
+      "ops": [
+        {
+          "description": "Get Payment Channels",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-payout-channels",
+          "params": [],
+          "path": "/payouts_channels"
+        }
+      ]
+    },
+    {
+      "name": "recurring",
+      "ops": [
+        {
+          "description": "Create Subscription Plan",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-recurring-plan",
+          "params": [],
+          "path": "/recurring/plans"
+        },
+        {
+          "description": "Get Subscription Plan",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-recurring-plan",
+          "params": [
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/recurring/plans/{id}"
+        },
+        {
+          "description": "Update Subscription Plan",
+          "has_body": true,
+          "method": "PATCH",
+          "name": "patch-update-recurring-plan",
+          "params": [
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/recurring/plans/{id}"
+        },
+        {
+          "description": "Get List of Subscription Cycles",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-list-of-recurring-cycles",
+          "params": [
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/recurring/plans/{id}/cycles"
+        },
+        {
+          "description": "Deactivate Subscription Plan",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-deactivate-recurring-plan",
+          "params": [
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/recurring/plans/{id}/deactivate"
+        },
+        {
+          "description": "Get Subscription Cycle",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-recurring-cycle",
+          "params": [
+            {
+              "flag": "plan-id",
+              "location": "path",
+              "name": "plan_id",
+              "required": true
+            },
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/recurring/plans/{plan_id}/cycles/{id}"
+        },
+        {
+          "description": "Update Subscription Cycle",
+          "has_body": true,
+          "method": "PATCH",
+          "name": "patch-update-recurring-cycle",
+          "params": [
+            {
+              "flag": "plan-id",
+              "location": "path",
+              "name": "plan_id",
+              "required": true
+            },
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/recurring/plans/{plan_id}/cycles/{id}"
+        },
+        {
+          "description": "Force Attempt Subscription Cycle",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-force-attempt-recurring-cycle",
+          "params": [
+            {
+              "flag": "plan-id",
+              "location": "path",
+              "name": "plan_id",
+              "required": true
+            },
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/recurring/plans/{plan_id}/cycles/{id}/force_attempt"
+        },
+        {
+          "description": "Simulate cycle payment",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-simulate-cycle-payment",
+          "params": [
+            {
+              "flag": "plan-id",
+              "location": "path",
+              "name": "plan_id",
+              "required": true
+            },
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/recurring/plans/{plan_id}/cycles/{id}/simulate"
+        },
+        {
+          "description": "Update Subscription Schedule",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-update-recurring-schedule-1",
+          "params": [
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/recurring/schedules/{id}"
+        },
+        {
+          "description": "Update Subscription Schedule",
+          "has_body": true,
+          "method": "PATCH",
+          "name": "patch-update-recurring-schedule",
+          "params": [
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/recurring/schedules/{id}"
+        }
+      ]
+    },
+    {
+      "name": "refunds",
+      "ops": [
+        {
+          "description": "Refund a payment request",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-refund-payment-request",
+          "params": [],
+          "path": "/refunds"
+        }
+      ]
+    },
+    {
+      "name": "remittance-payouts",
+      "ops": [
+        {
+          "description": "Create a Cross-Border Payout",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-cross-border-payout",
+          "params": [],
+          "path": "/remittance_payouts"
+        },
+        {
+          "description": "Get cross-border payout by Id",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-cross-border-payout",
+          "params": [
+            {
+              "flag": "cross-border-payout-id",
+              "location": "path",
+              "name": "cross_border_payout_id",
+              "required": true
+            }
+          ],
+          "path": "/remittance_payouts/{cross_border_payout_id}"
+        },
+        {
+          "description": "Cancel cross-border payout",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-cancel-cross-border-payout",
+          "params": [
+            {
+              "flag": "cross-border-payout-id",
+              "location": "path",
+              "name": "cross_border_payout_id",
+              "required": true
+            }
+          ],
+          "path": "/remittance_payouts/{cross_border_payout_id}/cancel"
+        }
+      ]
+    },
+    {
+      "name": "reports",
+      "ops": [
+        {
+          "description": "Generate Report",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-generate-report",
+          "params": [],
+          "path": "/reports"
+        },
+        {
+          "description": "Get Report by ID",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-report",
+          "params": [
+            {
+              "flag": "report-id",
+              "location": "path",
+              "name": "report_id",
+              "required": true
+            }
+          ],
+          "path": "/reports/{report_id}"
+        }
+      ]
+    },
+    {
+      "name": "sessions",
+      "ops": [
+        {
+          "description": "Create a session",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-session",
+          "params": [],
+          "path": "/sessions"
+        },
+        {
+          "description": "Get the status of a session",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-session",
+          "params": [
+            {
+              "flag": "session-id",
+              "location": "path",
+              "name": "session_id",
+              "required": true
+            }
+          ],
+          "path": "/sessions/{session_id}"
+        },
+        {
+          "description": "Cancel a session",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-cancel-session",
+          "params": [
+            {
+              "flag": "session-id",
+              "location": "path",
+              "name": "session_id",
+              "required": true
+            }
+          ],
+          "path": "/sessions/{session_id}/cancel"
+        }
+      ]
+    },
+    {
+      "name": "split-rules",
+      "ops": [
+        {
+          "description": "Create split rule",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-split-rule",
+          "params": [],
+          "path": "/split_rules"
+        }
+      ]
+    },
+    {
       "name": "transactions",
       "ops": [
         {
-          "description": "List transactions",
+          "description": "List Transactions",
           "has_body": false,
           "method": "GET",
-          "name": "list-transactions",
-          "params": [
-            {
-              "flag": "types",
-              "location": "query",
-              "name": "types",
-              "required": false
-            },
-            {
-              "flag": "statuses",
-              "location": "query",
-              "name": "statuses",
-              "required": false
-            },
-            {
-              "flag": "channel-categories",
-              "location": "query",
-              "name": "channel_categories",
-              "required": false
-            },
-            {
-              "flag": "reference-id",
-              "location": "query",
-              "name": "reference_id",
-              "required": false
-            },
-            {
-              "flag": "product-id",
-              "location": "query",
-              "name": "product_id",
-              "required": false
-            },
-            {
-              "flag": "account-identifier",
-              "location": "query",
-              "name": "account_identifier",
-              "required": false
-            },
-            {
-              "flag": "currency",
-              "location": "query",
-              "name": "currency",
-              "required": false
-            },
-            {
-              "flag": "amount",
-              "location": "query",
-              "name": "amount",
-              "required": false
-            },
-            {
-              "flag": "created-gte",
-              "location": "query",
-              "name": "created[gte]",
-              "required": false
-            },
-            {
-              "flag": "created-lte",
-              "location": "query",
-              "name": "created[lte]",
-              "required": false
-            },
-            {
-              "flag": "updated-gte",
-              "location": "query",
-              "name": "updated[gte]",
-              "required": false
-            },
-            {
-              "flag": "updated-lte",
-              "location": "query",
-              "name": "updated[lte]",
-              "required": false
-            },
-            {
-              "flag": "limit",
-              "location": "query",
-              "name": "limit",
-              "required": false
-            },
-            {
-              "flag": "after-id",
-              "location": "query",
-              "name": "after_id",
-              "required": false
-            },
-            {
-              "flag": "before-id",
-              "location": "query",
-              "name": "before_id",
-              "required": false
-            }
-          ],
+          "name": "get-list-transactions",
+          "params": [],
           "path": "/transactions"
         },
         {
-          "description": "Get transaction",
+          "description": "Get Transaction by ID",
           "has_body": false,
           "method": "GET",
-          "name": "get-transaction",
+          "name": "get-get-transaction",
           "params": [
             {
               "flag": "transaction-id",
@@ -273,6 +788,402 @@
             }
           ],
           "path": "/transactions/{transaction_id}"
+        }
+      ]
+    },
+    {
+      "name": "transfers",
+      "ops": [
+        {
+          "description": "Create transfers",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-transfers",
+          "params": [],
+          "path": "/transfers"
+        },
+        {
+          "description": "Get transfer by reference",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-transfer-by-reference",
+          "params": [
+            {
+              "flag": "reference",
+              "location": "path",
+              "name": "reference",
+              "required": true
+            }
+          ],
+          "path": "/transfers/reference={reference}"
+        }
+      ]
+    },
+    {
+      "name": "v2",
+      "ops": [
+        {
+          "description": "List accounts",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-list-accounts",
+          "params": [],
+          "path": "/v2/accounts"
+        },
+        {
+          "description": "Create account",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-account",
+          "params": [],
+          "path": "/v2/accounts"
+        },
+        {
+          "description": "Get account",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-account",
+          "params": [
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/v2/accounts/{id}"
+        },
+        {
+          "description": "Update account",
+          "has_body": true,
+          "method": "PATCH",
+          "name": "patch-update-account",
+          "params": [
+            {
+              "flag": "id",
+              "location": "path",
+              "name": "id",
+              "required": true
+            }
+          ],
+          "path": "/v2/accounts/{id}"
+        },
+        {
+          "description": "Create a Payout",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-payout",
+          "params": [],
+          "path": "/v2/payouts"
+        },
+        {
+          "description": "Get all payouts by reference id",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-all-payouts",
+          "params": [],
+          "path": "/v2/payouts/"
+        },
+        {
+          "description": "Get payout by ID",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-payout",
+          "params": [
+            {
+              "flag": "payout-id",
+              "location": "path",
+              "name": "payout_id",
+              "required": true
+            }
+          ],
+          "path": "/v2/payouts/{payout_id}"
+        },
+        {
+          "description": "Cancel payout",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-cancel-payout",
+          "params": [
+            {
+              "flag": "payout-id",
+              "location": "path",
+              "name": "payout_id",
+              "required": true
+            }
+          ],
+          "path": "/v2/payouts/{payout_id}/cancel"
+        }
+      ]
+    },
+    {
+      "name": "v3",
+      "ops": [
+        {
+          "description": "Create a payment request",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-payment-request",
+          "params": [],
+          "path": "/v3/payment_requests"
+        },
+        {
+          "description": "Get the status of a payment request",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-payment-request",
+          "params": [
+            {
+              "flag": "payment-request-id",
+              "location": "path",
+              "name": "payment_request_id",
+              "required": true
+            }
+          ],
+          "path": "/v3/payment_requests/{payment_request_id}"
+        },
+        {
+          "description": "Cancel a payment request",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-cancel-payment-request",
+          "params": [
+            {
+              "flag": "payment-request-id",
+              "location": "path",
+              "name": "payment_request_id",
+              "required": true
+            }
+          ],
+          "path": "/v3/payment_requests/{payment_request_id}/cancel"
+        },
+        {
+          "description": "Simulate payment [test mode]",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-simulate-payment-test-mode",
+          "params": [
+            {
+              "flag": "payment-request-id",
+              "location": "path",
+              "name": "payment_request_id",
+              "required": true
+            }
+          ],
+          "path": "/v3/payment_requests/{payment_request_id}/simulate"
+        },
+        {
+          "description": "Create a new payment token",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-create-payment-token",
+          "params": [],
+          "path": "/v3/payment_tokens"
+        },
+        {
+          "description": "Get the status of a payment token",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-payment-token",
+          "params": [
+            {
+              "flag": "payment-token-id",
+              "location": "path",
+              "name": "payment_token_id",
+              "required": true
+            }
+          ],
+          "path": "/v3/payment_tokens/{payment_token_id}"
+        },
+        {
+          "description": "Cancel and deactivate a payment token",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-cancel-payment-token",
+          "params": [
+            {
+              "flag": "payment-token-id",
+              "location": "path",
+              "name": "payment_token_id",
+              "required": true
+            }
+          ],
+          "path": "/v3/payment_tokens/{payment_token_id}/cancel"
+        },
+        {
+          "description": "Get the status of a payment",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-get-payment",
+          "params": [
+            {
+              "flag": "payment-id",
+              "location": "path",
+              "name": "payment_id",
+              "required": true
+            }
+          ],
+          "path": "/v3/payments/{payment_id}"
+        },
+        {
+          "description": "Cancel a payment",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-cancel-payment",
+          "params": [
+            {
+              "flag": "payment-id",
+              "location": "path",
+              "name": "payment_id",
+              "required": true
+            }
+          ],
+          "path": "/v3/payments/{payment_id}/cancel"
+        },
+        {
+          "description": "Capture a payment",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-capture-payment",
+          "params": [
+            {
+              "flag": "payment-id",
+              "location": "path",
+              "name": "payment_id",
+              "required": true
+            }
+          ],
+          "path": "/v3/payments/{payment_id}/capture"
+        }
+      ]
+    },
+    {
+      "name": "your-account-holder-capabilities-webhook-url",
+      "ops": [
+        {
+          "description": "Account holder capabilities notification webhook",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-account-holder-capabilities-notification-webhook",
+          "params": [],
+          "path": "/your_account_holder_capabilities_webhook_url"
+        }
+      ]
+    },
+    {
+      "name": "your-account-holder-kyc-webhook-url",
+      "ops": [
+        {
+          "description": "Account holder KYC status notification webhook",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-account-holder-kyc-status-notification-webhook",
+          "params": [],
+          "path": "/your_account_holder_kyc_webhook_url"
+        }
+      ]
+    },
+    {
+      "name": "your-account-suspension-status-callback-url",
+      "ops": [
+        {
+          "description": "Account suspension webhook notification",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-account-suspension-webhook-notification",
+          "params": [],
+          "path": "/your_account_suspension_status_callback_url"
+        }
+      ]
+    },
+    {
+      "name": "your-payment-token-webhook-url",
+      "ops": [
+        {
+          "description": "Payment token webhook notification",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-payment-token-webhook-notification",
+          "params": [],
+          "path": "/your_payment_token_webhook_url"
+        }
+      ]
+    },
+    {
+      "name": "your-payment-webhook-url",
+      "ops": [
+        {
+          "description": "Payment webhook notification",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-payment-webhook-notification",
+          "params": [],
+          "path": "/your_payment_webhook_url"
+        }
+      ]
+    },
+    {
+      "name": "your-refund-webhook-url",
+      "ops": [
+        {
+          "description": "Refund webhook notification",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-refund-webhook-notification",
+          "params": [],
+          "path": "/your_refund_webhook_url"
+        }
+      ]
+    },
+    {
+      "name": "your-report-webhook-url",
+      "ops": [
+        {
+          "description": "Report webhook notification",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-report-webhook-notification",
+          "params": [],
+          "path": "/your_report_webhook_url"
+        }
+      ]
+    },
+    {
+      "name": "your-split-payment-webhook-url",
+      "ops": [
+        {
+          "description": "Split payment status notification webhook",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-split-payment-status-notification-webhook",
+          "params": [],
+          "path": "/your_split_payment_webhook_url"
+        }
+      ]
+    },
+    {
+      "name": "your-xenplatform-managed-webhook-url",
+      "ops": [
+        {
+          "description": "Managed account status webhook notification",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-managed-account-status-webhook-notification",
+          "params": [],
+          "path": "/your_xenplatform_managed_webhook_url"
+        }
+      ]
+    },
+    {
+      "name": "your-xenplatform-owned-webhook-url",
+      "ops": [
+        {
+          "description": "Owned account status webhook notification",
+          "has_body": true,
+          "method": "POST",
+          "name": "post-owned-account-status-webhook-notification",
+          "params": [],
+          "path": "/your_xenplatform_owned_webhook_url"
         }
       ]
     }
