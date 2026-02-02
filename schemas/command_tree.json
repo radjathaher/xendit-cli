@@ -16,7 +16,7 @@
           "description": "Get account holder",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-account-holder",
+          "name": "get-account-holder",
           "params": [
             {
               "flag": "id",
@@ -51,7 +51,7 @@
           "description": "Get balance",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-balance",
+          "name": "get-balance",
           "params": [],
           "path": "/balance"
         }
@@ -80,7 +80,7 @@
           "description": "Get Payment Detail",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-payment-detail",
+          "name": "get-payment-detail",
           "params": [
             {
               "flag": "id",
@@ -95,7 +95,7 @@
           "description": "Get Product List",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-product-list",
+          "name": "get-product-list",
           "params": [],
           "path": "/bill-payments/v1/product"
         },
@@ -103,7 +103,7 @@
           "description": "Get Product by ID",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-product-by-id",
+          "name": "get-product-by-id",
           "params": [
             {
               "flag": "id",
@@ -185,7 +185,7 @@
           "description": "Get customers list",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-customers-list",
+          "name": "get-customers-list",
           "params": [],
           "path": "/customers"
         },
@@ -201,7 +201,7 @@
           "description": "Get customer by id",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-customer-id",
+          "name": "get-customer-id",
           "params": [
             {
               "flag": "customer-id",
@@ -244,7 +244,7 @@
           "description": "Delete file by ID",
           "has_body": false,
           "method": "DELETE",
-          "name": "delete-delete-file-by-id",
+          "name": "delete-file-by-id",
           "params": [
             {
               "flag": "file-id",
@@ -259,7 +259,7 @@
           "description": "Get file by ID",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-file-by-id",
+          "name": "get-file-by-id",
           "params": [
             {
               "flag": "file-id",
@@ -430,7 +430,7 @@
           "description": "Get Payment Channels",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-payout-channels",
+          "name": "get-payout-channels",
           "params": [],
           "path": "/payouts_channels"
         }
@@ -451,7 +451,7 @@
           "description": "Get Subscription Plan",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-recurring-plan",
+          "name": "get-recurring-plan",
           "params": [
             {
               "flag": "id",
@@ -481,7 +481,7 @@
           "description": "Get List of Subscription Cycles",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-list-of-recurring-cycles",
+          "name": "get-list-of-recurring-cycles",
           "params": [
             {
               "flag": "id",
@@ -511,7 +511,7 @@
           "description": "Get Subscription Cycle",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-recurring-cycle",
+          "name": "get-recurring-cycle",
           "params": [
             {
               "flag": "plan-id",
@@ -651,7 +651,7 @@
           "description": "Get cross-border payout by Id",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-cross-border-payout",
+          "name": "get-cross-border-payout",
           "params": [
             {
               "flag": "cross-border-payout-id",
@@ -694,7 +694,7 @@
           "description": "Get Report by ID",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-report",
+          "name": "get-report",
           "params": [
             {
               "flag": "report-id",
@@ -722,7 +722,7 @@
           "description": "Get the status of a session",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-session",
+          "name": "get-session",
           "params": [
             {
               "flag": "session-id",
@@ -778,7 +778,7 @@
           "description": "Get Transaction by ID",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-transaction",
+          "name": "get-transaction",
           "params": [
             {
               "flag": "transaction-id",
@@ -806,7 +806,7 @@
           "description": "Get transfer by reference",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-transfer-by-reference",
+          "name": "get-transfer-by-reference",
           "params": [
             {
               "flag": "reference",
@@ -842,7 +842,7 @@
           "description": "Get account",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-account",
+          "name": "get-account",
           "params": [
             {
               "flag": "id",
@@ -880,7 +880,7 @@
           "description": "Get all payouts by reference id",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-all-payouts",
+          "name": "get-all-payouts",
           "params": [],
           "path": "/v2/payouts/"
         },
@@ -888,7 +888,7 @@
           "description": "Get payout by ID",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-payout",
+          "name": "get-payout",
           "params": [
             {
               "flag": "payout-id",
@@ -931,7 +931,7 @@
           "description": "Get the status of a payment request",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-payment-request",
+          "name": "get-payment-request",
           "params": [
             {
               "flag": "payment-request-id",
@@ -984,7 +984,7 @@
           "description": "Get the status of a payment token",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-payment-token",
+          "name": "get-payment-token",
           "params": [
             {
               "flag": "payment-token-id",
@@ -1014,7 +1014,7 @@
           "description": "Get the status of a payment",
           "has_body": false,
           "method": "GET",
-          "name": "get-get-payment",
+          "name": "get-payment",
           "params": [
             {
               "flag": "payment-id",

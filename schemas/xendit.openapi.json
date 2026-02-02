@@ -1,7 +1,7 @@
 {
   "info": {
     "title": "Xendit API (scraped)",
-    "version": "0.1.3"
+    "version": "0.1.4"
   },
   "openapi": "3.0.3",
   "paths": {
@@ -41,7 +41,7 @@
     },
     "/account_holders/{id}": {
       "get": {
-        "operationId": "get-get-account-holder",
+        "operationId": "get-account-holder",
         "parameters": [
           {
             "in": "path",
@@ -115,7 +115,7 @@
     },
     "/balance": {
       "get": {
-        "operationId": "get-get-balance",
+        "operationId": "get-balance",
         "parameters": [],
         "responses": {
           "200": {
@@ -207,7 +207,7 @@
     },
     "/bill-payments/v1/payment/{id}": {
       "get": {
-        "operationId": "get-get-payment-detail",
+        "operationId": "get-payment-detail",
         "parameters": [
           {
             "in": "path",
@@ -240,7 +240,7 @@
     },
     "/bill-payments/v1/product": {
       "get": {
-        "operationId": "get-get-product-list",
+        "operationId": "get-product-list",
         "parameters": [],
         "responses": {
           "200": {
@@ -264,7 +264,7 @@
     },
     "/bill-payments/v1/product/{id}": {
       "get": {
-        "operationId": "get-get-product-by-id",
+        "operationId": "get-product-by-id",
         "parameters": [
           {
             "in": "path",
@@ -408,7 +408,7 @@
     },
     "/customers": {
       "get": {
-        "operationId": "get-get-customers-list",
+        "operationId": "get-customers-list",
         "parameters": [],
         "responses": {
           "200": {
@@ -464,7 +464,7 @@
     },
     "/customers/{customer_id}": {
       "get": {
-        "operationId": "get-get-customer-id",
+        "operationId": "get-customer-id",
         "parameters": [
           {
             "in": "path",
@@ -572,7 +572,7 @@
     },
     "/files/{file_id}": {
       "delete": {
-        "operationId": "delete-delete-file-by-id",
+        "operationId": "delete-file-by-id",
         "parameters": [
           {
             "in": "path",
@@ -603,7 +603,7 @@
         "summary": "Delete file by ID"
       },
       "get": {
-        "operationId": "get-get-file-by-id",
+        "operationId": "get-file-by-id",
         "parameters": [
           {
             "in": "path",
@@ -703,7 +703,7 @@
     },
     "/payouts_channels": {
       "get": {
-        "operationId": "get-get-payout-channels",
+        "operationId": "get-payout-channels",
         "parameters": [],
         "responses": {
           "200": {
@@ -761,7 +761,7 @@
     },
     "/recurring/plans/{id}": {
       "get": {
-        "operationId": "get-get-recurring-plan",
+        "operationId": "get-recurring-plan",
         "parameters": [
           {
             "in": "path",
@@ -835,7 +835,7 @@
     },
     "/recurring/plans/{id}/cycles": {
       "get": {
-        "operationId": "get-get-list-of-recurring-cycles",
+        "operationId": "get-list-of-recurring-cycles",
         "parameters": [
           {
             "in": "path",
@@ -911,7 +911,7 @@
     },
     "/recurring/plans/{plan_id}/cycles/{id}": {
       "get": {
-        "operationId": "get-get-recurring-cycle",
+        "operationId": "get-recurring-cycle",
         "parameters": [
           {
             "in": "path",
@@ -1245,7 +1245,7 @@
     },
     "/remittance_payouts/{cross_border_payout_id}": {
       "get": {
-        "operationId": "get-get-cross-border-payout",
+        "operationId": "get-cross-border-payout",
         "parameters": [
           {
             "in": "path",
@@ -1345,7 +1345,7 @@
     },
     "/reports/{report_id}": {
       "get": {
-        "operationId": "get-get-report",
+        "operationId": "get-report",
         "parameters": [
           {
             "in": "path",
@@ -1412,7 +1412,7 @@
     },
     "/sessions/{session_id}": {
       "get": {
-        "operationId": "get-get-session",
+        "operationId": "get-session",
         "parameters": [
           {
             "in": "path",
@@ -1546,7 +1546,7 @@
     },
     "/transactions/{transaction_id}": {
       "get": {
-        "operationId": "get-get-transaction",
+        "operationId": "get-transaction",
         "parameters": [
           {
             "in": "path",
@@ -1613,7 +1613,7 @@
     },
     "/transfers/reference={reference}": {
       "get": {
-        "operationId": "get-get-transfer-by-reference",
+        "operationId": "get-transfer-by-reference",
         "parameters": [
           {
             "in": "path",
@@ -1702,7 +1702,7 @@
     },
     "/v2/accounts/{id}": {
       "get": {
-        "operationId": "get-get-account",
+        "operationId": "get-account",
         "parameters": [
           {
             "in": "path",
@@ -1810,7 +1810,7 @@
     },
     "/v2/payouts/": {
       "get": {
-        "operationId": "get-get-all-payouts",
+        "operationId": "get-all-payouts",
         "parameters": [],
         "responses": {
           "200": {
@@ -1834,7 +1834,7 @@
     },
     "/v2/payouts/{payout_id}": {
       "get": {
-        "operationId": "get-get-payout",
+        "operationId": "get-payout",
         "parameters": [
           {
             "in": "path",
@@ -1934,7 +1934,7 @@
     },
     "/v3/payment_requests/{payment_request_id}": {
       "get": {
-        "operationId": "get-get-payment-request",
+        "operationId": "get-payment-request",
         "parameters": [
           {
             "in": "path",
@@ -2087,7 +2087,7 @@
     },
     "/v3/payment_tokens/{payment_token_id}": {
       "get": {
-        "operationId": "get-get-payment-token",
+        "operationId": "get-payment-token",
         "parameters": [
           {
             "in": "path",
@@ -2163,7 +2163,7 @@
     },
     "/v3/payments/{payment_id}": {
       "get": {
-        "operationId": "get-get-payment",
+        "operationId": "get-payment",
         "parameters": [
           {
             "in": "path",

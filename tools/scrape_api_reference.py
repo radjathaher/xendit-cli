@@ -196,7 +196,10 @@ def build_openapi(
             method_key = method.lower()
             if method_key not in {"get", "post", "put", "patch", "delete", "head", "options"}:
                 continue
-            op_id = f"{method_key}-{slug}"
+            if slug.startswith(f"{method_key}-"):
+                op_id = slug
+            else:
+                op_id = f"{method_key}-{slug}"
             if op_id in used_ids:
                 idx = 2
                 while f"{op_id}-{idx}" in used_ids:
