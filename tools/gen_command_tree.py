@@ -2,6 +2,7 @@
 import argparse
 import json
 import re
+import sys
 import urllib.parse
 from typing import Dict, List, Optional, Tuple
 
@@ -260,19 +261,77 @@ def build_from_postman(spec: Dict) -> Dict:
     }
 
 
+def merge_trees(trees: List[Dict]) -> Dict:
+    base_urls = [tree.get("base_url") for tree in trees if tree.get("base_url")]
+    unique_urls = [url for url in dict.fromkeys(base_urls) if url]
+    if not unique_urls:
+        base_url = "https://api.xendit.co"
+    elif len(unique_urls) == 1:
+        base_url = unique_urls[0]
+    else:
+        base_url = "https://api.xendit.co" if "https://api.xendit.co" in unique_urls else unique_urls[0]
+        print(
+            f"warning: multiple base URLs detected ({', '.join(unique_urls)}), using {base_url}",
+            file=sys.stderr,
+        )
+
+    resources: Dict[str, Dict] = {}
+    seen_keys: Dict[str, set] = {}
+    seen_names: Dict[str, set] = {}
+
+    for tree in trees:
+        for res in tree.get("resources") or []:
+            entry = resources.setdefault(res["name"], {"name": res["name"], "ops": []})
+            used_keys = seen_keys.setdefault(res["name"], set())
+            used_names = seen_names.setdefault(res["name"], {op["name"] for op in entry["ops"]})
+
+            for op in res.get("ops") or []:
+                key = (op["method"], op["path"])
+                if key in used_keys:
+                    continue
+                name = op["name"]
+                if name in used_names:
+                    candidate = normalize_op_name(f"{name}-{op['method'].lower()}")
+                    idx = 2
+                    while candidate in used_names:
+                        candidate = normalize_op_name(f"{name}-{idx}")
+                        idx += 1
+                    name = candidate
+                merged = dict(op)
+                merged["name"] = name
+                entry["ops"].append(merged)
+                used_keys.add(key)
+                used_names.add(name)
+
+    return {
+        "version": 1,
+        "base_url": base_url,
+        "resources": sorted(resources.values(), key=lambda r: r["name"]),
+    }
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description="Generate command tree from OpenAPI or Postman collection.")
-    parser.add_argument("--spec", default="schemas/xendit.openapi.json")
+    parser.add_argument("--spec", action="append", dest="specs")
     parser.add_argument("--out", default="schemas/command_tree.json")
     args = parser.parse_args()
 
-    spec = load_spec(args.spec)
-    if is_openapi(spec):
-        tree = build_from_openapi(spec)
-    elif is_postman(spec):
-        tree = build_from_postman(spec)
-    else:
-        raise SystemExit("error: unsupported spec format")
+    spec_paths = args.specs or [
+        "schemas/xendit.postman_collection.json",
+        "schemas/xendit.openapi.json",
+    ]
+
+    trees = []
+    for spec_path in spec_paths:
+        spec = load_spec(spec_path)
+        if is_openapi(spec):
+            trees.append(build_from_openapi(spec))
+        elif is_postman(spec):
+            trees.append(build_from_postman(spec))
+        else:
+            raise SystemExit(f"error: unsupported spec format in {spec_path}")
+
+    tree = merge_trees(trees)
 
     with open(args.out, "w", encoding="utf-8") as f:
         json.dump(tree, f, indent=2, sort_keys=True)

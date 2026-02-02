@@ -2,6 +2,38 @@
   "base_url": "https://api.xendit.co",
   "resources": [
     {
+      "name": "balance",
+      "ops": [
+        {
+          "description": "Get balance",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-balance",
+          "params": [
+            {
+              "flag": "account-type",
+              "location": "query",
+              "name": "account_type",
+              "required": false
+            },
+            {
+              "flag": "at-timestamp",
+              "location": "query",
+              "name": "at_timestamp",
+              "required": false
+            },
+            {
+              "flag": "currency",
+              "location": "query",
+              "name": "currency",
+              "required": false
+            }
+          ],
+          "path": "/balance"
+        }
+      ]
+    },
+    {
       "name": "card-session-js",
       "ops": [
         {
@@ -51,77 +83,6 @@
           "has_body": true,
           "method": "POST",
           "name": "create-reusable-payment-code-with-no-amount",
-          "params": [],
-          "path": "/v3/payment_requests"
-        },
-        {
-          "description": null,
-          "has_body": true,
-          "method": "POST",
-          "name": "create-reusable-payment-code-with-amount",
-          "params": [],
-          "path": "/v3/payment_requests"
-        },
-        {
-          "description": null,
-          "has_body": true,
-          "method": "POST",
-          "name": "create-one-off-payment-with-no-specific-payment-code",
-          "params": [],
-          "path": "/v3/payment_requests"
-        },
-        {
-          "description": null,
-          "has_body": true,
-          "method": "POST",
-          "name": "create-one-off-payment-with-specific-payment-code",
-          "params": [
-            {
-              "flag": "api-version",
-              "location": "query",
-              "name": "api-version",
-              "required": false
-            }
-          ],
-          "path": "/v3/payment_requests"
-        },
-        {
-          "description": null,
-          "has_body": true,
-          "method": "POST",
-          "name": "create-one-off-payment-with-customer-object",
-          "params": [],
-          "path": "/v3/payment_requests"
-        },
-        {
-          "description": null,
-          "has_body": true,
-          "method": "POST",
-          "name": "create-guest-checkout",
-          "params": [],
-          "path": "/v3/payment_requests"
-        },
-        {
-          "description": null,
-          "has_body": true,
-          "method": "POST",
-          "name": "create-with-card-full-pan",
-          "params": [],
-          "path": "/v3/payment_requests"
-        },
-        {
-          "description": null,
-          "has_body": true,
-          "method": "POST",
-          "name": "create-pay-and-save",
-          "params": [],
-          "path": "/v3/payment_requests"
-        },
-        {
-          "description": null,
-          "has_body": true,
-          "method": "POST",
-          "name": "create-pay-with-payment-token",
           "params": [],
           "path": "/v3/payment_requests"
         },
@@ -180,14 +141,6 @@
         },
         {
           "description": null,
-          "has_body": true,
-          "method": "POST",
-          "name": "create-payment-token-for-existing-customer",
-          "params": [],
-          "path": "/v3/payment_tokens"
-        },
-        {
-          "description": null,
           "has_body": false,
           "method": "POST",
           "name": "cancel-or-deactivate-payment-token",
@@ -201,6 +154,125 @@
           "name": "get-payment-token",
           "params": [],
           "path": "/v3/payment_tokens/pt-97ba7db7-c5a6-473e-82cc-7d2431f4417f"
+        }
+      ]
+    },
+    {
+      "name": "transactions",
+      "ops": [
+        {
+          "description": "List transactions",
+          "has_body": false,
+          "method": "GET",
+          "name": "list-transactions",
+          "params": [
+            {
+              "flag": "types",
+              "location": "query",
+              "name": "types",
+              "required": false
+            },
+            {
+              "flag": "statuses",
+              "location": "query",
+              "name": "statuses",
+              "required": false
+            },
+            {
+              "flag": "channel-categories",
+              "location": "query",
+              "name": "channel_categories",
+              "required": false
+            },
+            {
+              "flag": "reference-id",
+              "location": "query",
+              "name": "reference_id",
+              "required": false
+            },
+            {
+              "flag": "product-id",
+              "location": "query",
+              "name": "product_id",
+              "required": false
+            },
+            {
+              "flag": "account-identifier",
+              "location": "query",
+              "name": "account_identifier",
+              "required": false
+            },
+            {
+              "flag": "currency",
+              "location": "query",
+              "name": "currency",
+              "required": false
+            },
+            {
+              "flag": "amount",
+              "location": "query",
+              "name": "amount",
+              "required": false
+            },
+            {
+              "flag": "created-gte",
+              "location": "query",
+              "name": "created[gte]",
+              "required": false
+            },
+            {
+              "flag": "created-lte",
+              "location": "query",
+              "name": "created[lte]",
+              "required": false
+            },
+            {
+              "flag": "updated-gte",
+              "location": "query",
+              "name": "updated[gte]",
+              "required": false
+            },
+            {
+              "flag": "updated-lte",
+              "location": "query",
+              "name": "updated[lte]",
+              "required": false
+            },
+            {
+              "flag": "limit",
+              "location": "query",
+              "name": "limit",
+              "required": false
+            },
+            {
+              "flag": "after-id",
+              "location": "query",
+              "name": "after_id",
+              "required": false
+            },
+            {
+              "flag": "before-id",
+              "location": "query",
+              "name": "before_id",
+              "required": false
+            }
+          ],
+          "path": "/transactions"
+        },
+        {
+          "description": "Get transaction",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-transaction",
+          "params": [
+            {
+              "flag": "transaction-id",
+              "location": "path",
+              "name": "transaction_id",
+              "required": true
+            }
+          ],
+          "path": "/transactions/{transaction_id}"
         }
       ]
     }

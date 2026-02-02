@@ -72,7 +72,7 @@ xendit payment-requests create \
 
 ```bash
 tools/fetch_spec.py --out schemas/xendit.postman_collection.json
-tools/gen_command_tree.py --spec schemas/xendit.postman_collection.json --out schemas/command_tree.json
+tools/gen_command_tree.py --spec schemas/xendit.postman_collection.json --spec schemas/xendit.openapi.json --out schemas/command_tree.json
 cargo build
 ```
 
