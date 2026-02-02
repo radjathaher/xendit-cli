@@ -8,7 +8,7 @@
           "description": "Create account holder",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-account-holder",
+          "name": "create-account-holder",
           "params": [],
           "path": "/account_holders"
         },
@@ -31,7 +31,7 @@
           "description": "Update account holder",
           "has_body": true,
           "method": "PATCH",
-          "name": "patch-update-account-holder",
+          "name": "update-account-holder",
           "params": [
             {
               "flag": "id",
@@ -64,7 +64,7 @@
           "description": "Create Inquiry",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-inquiry",
+          "name": "create-inquiry",
           "params": [],
           "path": "/bill-payments/v1/inquiry"
         },
@@ -72,7 +72,7 @@
           "description": "Create Payment",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-payment",
+          "name": "create-payment",
           "params": [],
           "path": "/bill-payments/v1/payment"
         },
@@ -118,7 +118,7 @@
           "description": "Payment Status Callback (Webhook)",
           "has_body": true,
           "method": "POST",
-          "name": "post-payment-status-callback-webhook",
+          "name": "payment-status-callback-webhook",
           "params": [],
           "path": "/bill-payments/your-callback-url"
         }
@@ -131,7 +131,7 @@
           "description": "Set webhook URL",
           "has_body": true,
           "method": "POST",
-          "name": "post-set-webhook-url",
+          "name": "set-webhook-url",
           "params": [
             {
               "flag": "type",
@@ -172,7 +172,7 @@
           "description": "Cross-Border Payout Webhook",
           "has_body": true,
           "method": "POST",
-          "name": "post-cross-border-payout-webhook-notification",
+          "name": "cross-border-payout-webhook-notification",
           "params": [],
           "path": "/cross_border_payout_webhook_url"
         }
@@ -193,7 +193,7 @@
           "description": "Create customer request",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-customer-request",
+          "name": "create-customer-request",
           "params": [],
           "path": "/customers"
         },
@@ -216,7 +216,7 @@
           "description": "Update Customer",
           "has_body": true,
           "method": "PATCH",
-          "name": "patch-update-customer",
+          "name": "update-customer",
           "params": [
             {
               "flag": "customer-id",
@@ -236,7 +236,7 @@
           "description": "Upload file",
           "has_body": true,
           "method": "POST",
-          "name": "post-upload-file",
+          "name": "upload-file",
           "params": [],
           "path": "/files"
         },
@@ -274,7 +274,7 @@
           "description": "Download file by ID",
           "has_body": false,
           "method": "GET",
-          "name": "get-download-file-by-id",
+          "name": "download-file-by-id",
           "params": [
             {
               "flag": "file-id",
@@ -315,7 +315,7 @@
           "description": "Create Subscription Plan",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-recurring-plan-2",
+          "name": "post-create-recurring-plan",
           "params": [
             {
               "flag": "merchant-defined-callback-url",
@@ -417,7 +417,7 @@
           "description": "Payout Webhook",
           "has_body": true,
           "method": "POST",
-          "name": "post-payout-webhook-notification",
+          "name": "payout-webhook-notification",
           "params": [],
           "path": "/payout_webhook_url"
         }
@@ -443,7 +443,7 @@
           "description": "Create Subscription Plan",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-recurring-plan",
+          "name": "create-recurring-plan",
           "params": [],
           "path": "/recurring/plans"
         },
@@ -466,7 +466,7 @@
           "description": "Update Subscription Plan",
           "has_body": true,
           "method": "PATCH",
-          "name": "patch-update-recurring-plan",
+          "name": "update-recurring-plan",
           "params": [
             {
               "flag": "id",
@@ -496,7 +496,7 @@
           "description": "Deactivate Subscription Plan",
           "has_body": true,
           "method": "POST",
-          "name": "post-deactivate-recurring-plan",
+          "name": "deactivate-recurring-plan",
           "params": [
             {
               "flag": "id",
@@ -532,7 +532,7 @@
           "description": "Update Subscription Cycle",
           "has_body": true,
           "method": "PATCH",
-          "name": "patch-update-recurring-cycle",
+          "name": "update-recurring-cycle",
           "params": [
             {
               "flag": "plan-id",
@@ -553,7 +553,7 @@
           "description": "Force Attempt Subscription Cycle",
           "has_body": true,
           "method": "POST",
-          "name": "post-force-attempt-recurring-cycle",
+          "name": "force-attempt-recurring-cycle",
           "params": [
             {
               "flag": "plan-id",
@@ -574,7 +574,7 @@
           "description": "Simulate cycle payment",
           "has_body": true,
           "method": "POST",
-          "name": "post-simulate-cycle-payment",
+          "name": "simulate-cycle-payment",
           "params": [
             {
               "flag": "plan-id",
@@ -595,7 +595,7 @@
           "description": "Update Subscription Schedule",
           "has_body": false,
           "method": "GET",
-          "name": "get-update-recurring-schedule-1",
+          "name": "update-recurring-schedule-1",
           "params": [
             {
               "flag": "id",
@@ -610,7 +610,7 @@
           "description": "Update Subscription Schedule",
           "has_body": true,
           "method": "PATCH",
-          "name": "patch-update-recurring-schedule",
+          "name": "update-recurring-schedule",
           "params": [
             {
               "flag": "id",
@@ -630,7 +630,7 @@
           "description": "Refund a payment request",
           "has_body": true,
           "method": "POST",
-          "name": "post-refund-payment-request",
+          "name": "refund-payment-request",
           "params": [],
           "path": "/refunds"
         }
@@ -643,7 +643,7 @@
           "description": "Create a Cross-Border Payout",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-cross-border-payout",
+          "name": "create-cross-border-payout",
           "params": [],
           "path": "/remittance_payouts"
         },
@@ -666,7 +666,7 @@
           "description": "Cancel cross-border payout",
           "has_body": false,
           "method": "GET",
-          "name": "get-cancel-cross-border-payout",
+          "name": "cancel-cross-border-payout",
           "params": [
             {
               "flag": "cross-border-payout-id",
@@ -686,7 +686,7 @@
           "description": "Generate Report",
           "has_body": true,
           "method": "POST",
-          "name": "post-generate-report",
+          "name": "generate-report",
           "params": [],
           "path": "/reports"
         },
@@ -714,7 +714,7 @@
           "description": "Create a session",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-session",
+          "name": "create-session",
           "params": [],
           "path": "/sessions"
         },
@@ -737,7 +737,7 @@
           "description": "Cancel a session",
           "has_body": true,
           "method": "POST",
-          "name": "post-cancel-session",
+          "name": "cancel-session",
           "params": [
             {
               "flag": "session-id",
@@ -757,7 +757,7 @@
           "description": "Create split rule",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-split-rule",
+          "name": "create-split-rule",
           "params": [],
           "path": "/split_rules"
         }
@@ -770,7 +770,7 @@
           "description": "List Transactions",
           "has_body": false,
           "method": "GET",
-          "name": "get-list-transactions",
+          "name": "list-transactions",
           "params": [],
           "path": "/transactions"
         },
@@ -798,7 +798,7 @@
           "description": "Create transfers",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-transfers",
+          "name": "create-transfers",
           "params": [],
           "path": "/transfers"
         },
@@ -826,7 +826,7 @@
           "description": "List accounts",
           "has_body": false,
           "method": "GET",
-          "name": "get-list-accounts",
+          "name": "list-accounts",
           "params": [],
           "path": "/v2/accounts"
         },
@@ -834,7 +834,7 @@
           "description": "Create account",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-account",
+          "name": "create-account",
           "params": [],
           "path": "/v2/accounts"
         },
@@ -857,7 +857,7 @@
           "description": "Update account",
           "has_body": true,
           "method": "PATCH",
-          "name": "patch-update-account",
+          "name": "update-account",
           "params": [
             {
               "flag": "id",
@@ -872,7 +872,7 @@
           "description": "Create a Payout",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-payout",
+          "name": "create-payout",
           "params": [],
           "path": "/v2/payouts"
         },
@@ -903,7 +903,7 @@
           "description": "Cancel payout",
           "has_body": false,
           "method": "GET",
-          "name": "get-cancel-payout",
+          "name": "cancel-payout",
           "params": [
             {
               "flag": "payout-id",
@@ -923,7 +923,7 @@
           "description": "Create a payment request",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-payment-request",
+          "name": "create-payment-request",
           "params": [],
           "path": "/v3/payment_requests"
         },
@@ -946,7 +946,7 @@
           "description": "Cancel a payment request",
           "has_body": true,
           "method": "POST",
-          "name": "post-cancel-payment-request",
+          "name": "cancel-payment-request",
           "params": [
             {
               "flag": "payment-request-id",
@@ -961,7 +961,7 @@
           "description": "Simulate payment [test mode]",
           "has_body": true,
           "method": "POST",
-          "name": "post-simulate-payment-test-mode",
+          "name": "simulate-payment-test-mode",
           "params": [
             {
               "flag": "payment-request-id",
@@ -976,7 +976,7 @@
           "description": "Create a new payment token",
           "has_body": true,
           "method": "POST",
-          "name": "post-create-payment-token",
+          "name": "create-payment-token",
           "params": [],
           "path": "/v3/payment_tokens"
         },
@@ -999,7 +999,7 @@
           "description": "Cancel and deactivate a payment token",
           "has_body": true,
           "method": "POST",
-          "name": "post-cancel-payment-token",
+          "name": "cancel-payment-token",
           "params": [
             {
               "flag": "payment-token-id",
@@ -1029,7 +1029,7 @@
           "description": "Cancel a payment",
           "has_body": true,
           "method": "POST",
-          "name": "post-cancel-payment",
+          "name": "cancel-payment",
           "params": [
             {
               "flag": "payment-id",
@@ -1044,7 +1044,7 @@
           "description": "Capture a payment",
           "has_body": true,
           "method": "POST",
-          "name": "post-capture-payment",
+          "name": "capture-payment",
           "params": [
             {
               "flag": "payment-id",
@@ -1064,7 +1064,7 @@
           "description": "Account holder capabilities notification webhook",
           "has_body": true,
           "method": "POST",
-          "name": "post-account-holder-capabilities-notification-webhook",
+          "name": "account-holder-capabilities-notification-webhook",
           "params": [],
           "path": "/your_account_holder_capabilities_webhook_url"
         }
@@ -1077,7 +1077,7 @@
           "description": "Account holder KYC status notification webhook",
           "has_body": true,
           "method": "POST",
-          "name": "post-account-holder-kyc-status-notification-webhook",
+          "name": "account-holder-kyc-status-notification-webhook",
           "params": [],
           "path": "/your_account_holder_kyc_webhook_url"
         }
@@ -1090,7 +1090,7 @@
           "description": "Account suspension webhook notification",
           "has_body": true,
           "method": "POST",
-          "name": "post-account-suspension-webhook-notification",
+          "name": "account-suspension-webhook-notification",
           "params": [],
           "path": "/your_account_suspension_status_callback_url"
         }
@@ -1103,7 +1103,7 @@
           "description": "Payment token webhook notification",
           "has_body": true,
           "method": "POST",
-          "name": "post-payment-token-webhook-notification",
+          "name": "payment-token-webhook-notification",
           "params": [],
           "path": "/your_payment_token_webhook_url"
         }
@@ -1116,7 +1116,7 @@
           "description": "Payment webhook notification",
           "has_body": true,
           "method": "POST",
-          "name": "post-payment-webhook-notification",
+          "name": "payment-webhook-notification",
           "params": [],
           "path": "/your_payment_webhook_url"
         }
@@ -1129,7 +1129,7 @@
           "description": "Refund webhook notification",
           "has_body": true,
           "method": "POST",
-          "name": "post-refund-webhook-notification",
+          "name": "refund-webhook-notification",
           "params": [],
           "path": "/your_refund_webhook_url"
         }
@@ -1142,7 +1142,7 @@
           "description": "Report webhook notification",
           "has_body": true,
           "method": "POST",
-          "name": "post-report-webhook-notification",
+          "name": "report-webhook-notification",
           "params": [],
           "path": "/your_report_webhook_url"
         }
@@ -1155,7 +1155,7 @@
           "description": "Split payment status notification webhook",
           "has_body": true,
           "method": "POST",
-          "name": "post-split-payment-status-notification-webhook",
+          "name": "split-payment-status-notification-webhook",
           "params": [],
           "path": "/your_split_payment_webhook_url"
         }
@@ -1168,7 +1168,7 @@
           "description": "Managed account status webhook notification",
           "has_body": true,
           "method": "POST",
-          "name": "post-managed-account-status-webhook-notification",
+          "name": "managed-account-status-webhook-notification",
           "params": [],
           "path": "/your_xenplatform_managed_webhook_url"
         }
@@ -1181,7 +1181,7 @@
           "description": "Owned account status webhook notification",
           "has_body": true,
           "method": "POST",
-          "name": "post-owned-account-status-webhook-notification",
+          "name": "owned-account-status-webhook-notification",
           "params": [],
           "path": "/your_xenplatform_owned_webhook_url"
         }

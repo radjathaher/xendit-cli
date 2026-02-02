@@ -1,13 +1,13 @@
 {
   "info": {
     "title": "Xendit API (scraped)",
-    "version": "0.1.4"
+    "version": "0.1.5"
   },
   "openapi": "3.0.3",
   "paths": {
     "/account_holders": {
       "post": {
-        "operationId": "post-create-account-holder",
+        "operationId": "create-account-holder",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -72,7 +72,7 @@
         "summary": "Get account holder"
       },
       "patch": {
-        "operationId": "patch-update-account-holder",
+        "operationId": "update-account-holder",
         "parameters": [
           {
             "in": "path",
@@ -139,7 +139,7 @@
     },
     "/bill-payments/v1/inquiry": {
       "post": {
-        "operationId": "post-create-inquiry",
+        "operationId": "create-inquiry",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -173,7 +173,7 @@
     },
     "/bill-payments/v1/payment": {
       "post": {
-        "operationId": "post-create-payment",
+        "operationId": "create-payment",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -297,7 +297,7 @@
     },
     "/bill-payments/your-callback-url": {
       "post": {
-        "operationId": "post-payment-status-callback-webhook",
+        "operationId": "payment-status-callback-webhook",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -331,7 +331,7 @@
     },
     "/callback_urls/{type}": {
       "post": {
-        "operationId": "post-set-webhook-url",
+        "operationId": "set-webhook-url",
         "parameters": [
           {
             "in": "path",
@@ -374,7 +374,7 @@
     },
     "/cross_border_payout_webhook_url": {
       "post": {
-        "operationId": "post-cross-border-payout-webhook-notification",
+        "operationId": "cross-border-payout-webhook-notification",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -430,7 +430,7 @@
         "summary": "Get customers list"
       },
       "post": {
-        "operationId": "post-create-customer-request",
+        "operationId": "create-customer-request",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -495,7 +495,7 @@
         "summary": "Get customer by id"
       },
       "patch": {
-        "operationId": "patch-update-customer",
+        "operationId": "update-customer",
         "parameters": [
           {
             "in": "path",
@@ -538,7 +538,7 @@
     },
     "/files": {
       "post": {
-        "operationId": "post-upload-file",
+        "operationId": "upload-file",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -636,7 +636,7 @@
     },
     "/files/{file_id}/download": {
       "get": {
-        "operationId": "get-download-file-by-id",
+        "operationId": "download-file-by-id",
         "parameters": [
           {
             "in": "path",
@@ -669,7 +669,7 @@
     },
     "/payout_webhook_url": {
       "post": {
-        "operationId": "post-payout-webhook-notification",
+        "operationId": "payout-webhook-notification",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -727,7 +727,7 @@
     },
     "/recurring/plans": {
       "post": {
-        "operationId": "post-create-recurring-plan",
+        "operationId": "create-recurring-plan",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -792,7 +792,7 @@
         "summary": "Get Subscription Plan"
       },
       "patch": {
-        "operationId": "patch-update-recurring-plan",
+        "operationId": "update-recurring-plan",
         "parameters": [
           {
             "in": "path",
@@ -868,7 +868,7 @@
     },
     "/recurring/plans/{id}/deactivate": {
       "post": {
-        "operationId": "post-deactivate-recurring-plan",
+        "operationId": "deactivate-recurring-plan",
         "parameters": [
           {
             "in": "path",
@@ -950,7 +950,7 @@
         "summary": "Get Subscription Cycle"
       },
       "patch": {
-        "operationId": "patch-update-recurring-cycle",
+        "operationId": "update-recurring-cycle",
         "parameters": [
           {
             "in": "path",
@@ -1001,7 +1001,7 @@
     },
     "/recurring/plans/{plan_id}/cycles/{id}/force_attempt": {
       "post": {
-        "operationId": "post-force-attempt-recurring-cycle",
+        "operationId": "force-attempt-recurring-cycle",
         "parameters": [
           {
             "in": "path",
@@ -1052,7 +1052,7 @@
     },
     "/recurring/plans/{plan_id}/cycles/{id}/simulate": {
       "post": {
-        "operationId": "post-simulate-cycle-payment",
+        "operationId": "simulate-cycle-payment",
         "parameters": [
           {
             "in": "path",
@@ -1103,7 +1103,7 @@
     },
     "/recurring/schedules/{id}": {
       "get": {
-        "operationId": "get-update-recurring-schedule-1",
+        "operationId": "update-recurring-schedule-1",
         "parameters": [
           {
             "in": "path",
@@ -1134,7 +1134,7 @@
         "summary": "Update Subscription Schedule"
       },
       "patch": {
-        "operationId": "patch-update-recurring-schedule",
+        "operationId": "update-recurring-schedule",
         "parameters": [
           {
             "in": "path",
@@ -1177,7 +1177,7 @@
     },
     "/refunds": {
       "post": {
-        "operationId": "post-refund-payment-request",
+        "operationId": "refund-payment-request",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1211,7 +1211,7 @@
     },
     "/remittance_payouts": {
       "post": {
-        "operationId": "post-create-cross-border-payout",
+        "operationId": "create-cross-border-payout",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1278,7 +1278,7 @@
     },
     "/remittance_payouts/{cross_border_payout_id}/cancel": {
       "get": {
-        "operationId": "get-cancel-cross-border-payout",
+        "operationId": "cancel-cross-border-payout",
         "parameters": [
           {
             "in": "path",
@@ -1311,7 +1311,7 @@
     },
     "/reports": {
       "post": {
-        "operationId": "post-generate-report",
+        "operationId": "generate-report",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1378,7 +1378,7 @@
     },
     "/sessions": {
       "post": {
-        "operationId": "post-create-session",
+        "operationId": "create-session",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1445,7 +1445,7 @@
     },
     "/sessions/{session_id}/cancel": {
       "post": {
-        "operationId": "post-cancel-session",
+        "operationId": "cancel-session",
         "parameters": [
           {
             "in": "path",
@@ -1488,7 +1488,7 @@
     },
     "/split_rules": {
       "post": {
-        "operationId": "post-create-split-rule",
+        "operationId": "create-split-rule",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1522,7 +1522,7 @@
     },
     "/transactions": {
       "get": {
-        "operationId": "get-list-transactions",
+        "operationId": "list-transactions",
         "parameters": [],
         "responses": {
           "200": {
@@ -1579,7 +1579,7 @@
     },
     "/transfers": {
       "post": {
-        "operationId": "post-create-transfers",
+        "operationId": "create-transfers",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1646,7 +1646,7 @@
     },
     "/v2/accounts": {
       "get": {
-        "operationId": "get-list-accounts",
+        "operationId": "list-accounts",
         "parameters": [],
         "responses": {
           "200": {
@@ -1668,7 +1668,7 @@
         "summary": "List accounts"
       },
       "post": {
-        "operationId": "post-create-account",
+        "operationId": "create-account",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1733,7 +1733,7 @@
         "summary": "Get account"
       },
       "patch": {
-        "operationId": "patch-update-account",
+        "operationId": "update-account",
         "parameters": [
           {
             "in": "path",
@@ -1776,7 +1776,7 @@
     },
     "/v2/payouts": {
       "post": {
-        "operationId": "post-create-payout",
+        "operationId": "create-payout",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1867,7 +1867,7 @@
     },
     "/v2/payouts/{payout_id}/cancel": {
       "get": {
-        "operationId": "get-cancel-payout",
+        "operationId": "cancel-payout",
         "parameters": [
           {
             "in": "path",
@@ -1900,7 +1900,7 @@
     },
     "/v3/payment_requests": {
       "post": {
-        "operationId": "post-create-payment-request",
+        "operationId": "create-payment-request",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -1967,7 +1967,7 @@
     },
     "/v3/payment_requests/{payment_request_id}/cancel": {
       "post": {
-        "operationId": "post-cancel-payment-request",
+        "operationId": "cancel-payment-request",
         "parameters": [
           {
             "in": "path",
@@ -2010,7 +2010,7 @@
     },
     "/v3/payment_requests/{payment_request_id}/simulate": {
       "post": {
-        "operationId": "post-simulate-payment-test-mode",
+        "operationId": "simulate-payment-test-mode",
         "parameters": [
           {
             "in": "path",
@@ -2053,7 +2053,7 @@
     },
     "/v3/payment_tokens": {
       "post": {
-        "operationId": "post-create-payment-token",
+        "operationId": "create-payment-token",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -2120,7 +2120,7 @@
     },
     "/v3/payment_tokens/{payment_token_id}/cancel": {
       "post": {
-        "operationId": "post-cancel-payment-token",
+        "operationId": "cancel-payment-token",
         "parameters": [
           {
             "in": "path",
@@ -2196,7 +2196,7 @@
     },
     "/v3/payments/{payment_id}/cancel": {
       "post": {
-        "operationId": "post-cancel-payment",
+        "operationId": "cancel-payment",
         "parameters": [
           {
             "in": "path",
@@ -2239,7 +2239,7 @@
     },
     "/v3/payments/{payment_id}/capture": {
       "post": {
-        "operationId": "post-capture-payment",
+        "operationId": "capture-payment",
         "parameters": [
           {
             "in": "path",
@@ -2282,7 +2282,7 @@
     },
     "/your_account_holder_capabilities_webhook_url": {
       "post": {
-        "operationId": "post-account-holder-capabilities-notification-webhook",
+        "operationId": "account-holder-capabilities-notification-webhook",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -2316,7 +2316,7 @@
     },
     "/your_account_holder_kyc_webhook_url": {
       "post": {
-        "operationId": "post-account-holder-kyc-status-notification-webhook",
+        "operationId": "account-holder-kyc-status-notification-webhook",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -2350,7 +2350,7 @@
     },
     "/your_account_suspension_status_callback_url": {
       "post": {
-        "operationId": "post-account-suspension-webhook-notification",
+        "operationId": "account-suspension-webhook-notification",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -2384,7 +2384,7 @@
     },
     "/your_payment_token_webhook_url": {
       "post": {
-        "operationId": "post-payment-token-webhook-notification",
+        "operationId": "payment-token-webhook-notification",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -2418,7 +2418,7 @@
     },
     "/your_payment_webhook_url": {
       "post": {
-        "operationId": "post-payment-webhook-notification",
+        "operationId": "payment-webhook-notification",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -2452,7 +2452,7 @@
     },
     "/your_refund_webhook_url": {
       "post": {
-        "operationId": "post-refund-webhook-notification",
+        "operationId": "refund-webhook-notification",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -2486,7 +2486,7 @@
     },
     "/your_report_webhook_url": {
       "post": {
-        "operationId": "post-report-webhook-notification",
+        "operationId": "report-webhook-notification",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -2520,7 +2520,7 @@
     },
     "/your_split_payment_webhook_url": {
       "post": {
-        "operationId": "post-split-payment-status-notification-webhook",
+        "operationId": "split-payment-status-notification-webhook",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -2554,7 +2554,7 @@
     },
     "/your_xenplatform_managed_webhook_url": {
       "post": {
-        "operationId": "post-managed-account-status-webhook-notification",
+        "operationId": "managed-account-status-webhook-notification",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -2588,7 +2588,7 @@
     },
     "/your_xenplatform_owned_webhook_url": {
       "post": {
-        "operationId": "post-owned-account-status-webhook-notification",
+        "operationId": "owned-account-status-webhook-notification",
         "parameters": [],
         "requestBody": {
           "content": {
@@ -2622,7 +2622,7 @@
     },
     "/{merchant defined callback url}": {
       "post": {
-        "operationId": "post-create-recurring-plan-2",
+        "operationId": "post-create-recurring-plan",
         "parameters": [
           {
             "in": "path",
