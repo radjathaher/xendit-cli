@@ -52,7 +52,26 @@
           "has_body": false,
           "method": "GET",
           "name": "get-balance",
-          "params": [],
+          "params": [
+            {
+              "flag": "account-type",
+              "location": "query",
+              "name": "account_type",
+              "required": false
+            },
+            {
+              "flag": "at-timestamp",
+              "location": "query",
+              "name": "at_timestamp",
+              "required": false
+            },
+            {
+              "flag": "currency",
+              "location": "query",
+              "name": "currency",
+              "required": false
+            }
+          ],
           "path": "/balance"
         }
       ]
@@ -767,15 +786,106 @@
       "name": "transactions",
       "ops": [
         {
-          "description": "List Transactions",
+          "description": "List transactions",
           "has_body": false,
           "method": "GET",
           "name": "list-transactions",
-          "params": [],
+          "params": [
+            {
+              "flag": "types",
+              "location": "query",
+              "name": "types",
+              "required": false
+            },
+            {
+              "flag": "statuses",
+              "location": "query",
+              "name": "statuses",
+              "required": false
+            },
+            {
+              "flag": "channel-categories",
+              "location": "query",
+              "name": "channel_categories",
+              "required": false
+            },
+            {
+              "flag": "reference-id",
+              "location": "query",
+              "name": "reference_id",
+              "required": false
+            },
+            {
+              "flag": "product-id",
+              "location": "query",
+              "name": "product_id",
+              "required": false
+            },
+            {
+              "flag": "account-identifier",
+              "location": "query",
+              "name": "account_identifier",
+              "required": false
+            },
+            {
+              "flag": "currency",
+              "location": "query",
+              "name": "currency",
+              "required": false
+            },
+            {
+              "flag": "amount",
+              "location": "query",
+              "name": "amount",
+              "required": false
+            },
+            {
+              "flag": "created-gte",
+              "location": "query",
+              "name": "created[gte]",
+              "required": false
+            },
+            {
+              "flag": "created-lte",
+              "location": "query",
+              "name": "created[lte]",
+              "required": false
+            },
+            {
+              "flag": "updated-gte",
+              "location": "query",
+              "name": "updated[gte]",
+              "required": false
+            },
+            {
+              "flag": "updated-lte",
+              "location": "query",
+              "name": "updated[lte]",
+              "required": false
+            },
+            {
+              "flag": "limit",
+              "location": "query",
+              "name": "limit",
+              "required": false
+            },
+            {
+              "flag": "after-id",
+              "location": "query",
+              "name": "after_id",
+              "required": false
+            },
+            {
+              "flag": "before-id",
+              "location": "query",
+              "name": "before_id",
+              "required": false
+            }
+          ],
           "path": "/transactions"
         },
         {
-          "description": "Get Transaction by ID",
+          "description": "Get transaction",
           "has_body": false,
           "method": "GET",
           "name": "get-transaction",

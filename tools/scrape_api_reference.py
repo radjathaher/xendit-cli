@@ -30,6 +30,52 @@ METHOD_URL_RE = re.compile(
     re.IGNORECASE,
 )
 
+OVERRIDES = {
+    "/balance": {
+        "get": {
+            "summary": "Get balance",
+            "operationId": "get-balance",
+            "parameters": [
+                {"name": "account_type", "in": "query", "required": False, "schema": {"type": "string"}},
+                {"name": "at_timestamp", "in": "query", "required": False, "schema": {"type": "string", "format": "date-time"}},
+                {"name": "currency", "in": "query", "required": False, "schema": {"type": "string"}},
+            ],
+        }
+    },
+    "/transactions": {
+        "get": {
+            "summary": "List transactions",
+            "operationId": "list-transactions",
+            "parameters": [
+                {"name": "types", "in": "query", "required": False, "schema": {"type": "string"}},
+                {"name": "statuses", "in": "query", "required": False, "schema": {"type": "string"}},
+                {"name": "channel_categories", "in": "query", "required": False, "schema": {"type": "string"}},
+                {"name": "reference_id", "in": "query", "required": False, "schema": {"type": "string"}},
+                {"name": "product_id", "in": "query", "required": False, "schema": {"type": "string"}},
+                {"name": "account_identifier", "in": "query", "required": False, "schema": {"type": "string"}},
+                {"name": "currency", "in": "query", "required": False, "schema": {"type": "string"}},
+                {"name": "amount", "in": "query", "required": False, "schema": {"type": "number"}},
+                {"name": "created[gte]", "in": "query", "required": False, "schema": {"type": "string", "format": "date-time"}},
+                {"name": "created[lte]", "in": "query", "required": False, "schema": {"type": "string", "format": "date-time"}},
+                {"name": "updated[gte]", "in": "query", "required": False, "schema": {"type": "string", "format": "date-time"}},
+                {"name": "updated[lte]", "in": "query", "required": False, "schema": {"type": "string", "format": "date-time"}},
+                {"name": "limit", "in": "query", "required": False, "schema": {"type": "integer"}},
+                {"name": "after_id", "in": "query", "required": False, "schema": {"type": "string"}},
+                {"name": "before_id", "in": "query", "required": False, "schema": {"type": "string"}},
+            ],
+        }
+    },
+    "/transactions/{transaction_id}": {
+        "get": {
+            "summary": "Get transaction",
+            "operationId": "get-transaction",
+            "parameters": [
+                {"name": "transaction_id", "in": "path", "required": True, "schema": {"type": "string"}},
+            ],
+        }
+    },
+}
+
 
 def fetch_url(url: str) -> bytes:
     encoded = urllib.parse.quote(url, safe=":/?=&%")
@@ -171,6 +217,15 @@ def merge_seed_paths(target: dict, seed: dict | None) -> None:
                 target["paths"][path][method] = detail
 
 
+def apply_overrides(spec: dict) -> None:
+    for path, methods in OVERRIDES.items():
+        entry = spec["paths"].setdefault(path, {})
+        for method, override in methods.items():
+            detail = entry.get(method, {})
+            detail.update(override)
+            entry[method] = detail
+
+
 def build_openapi(
     articles: dict[str, dict],
     doc_bases: list[str],
@@ -230,6 +285,7 @@ def build_openapi(
         "paths": paths,
     }
     merge_seed_paths(spec, seed)
+    apply_overrides(spec)
     return spec
 
 
