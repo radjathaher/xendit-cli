@@ -1,0 +1,19 @@
+{
+  "base_url": "https://api.xendit.co",
+  "resources": [
+    {
+      "name": "balance",
+      "ops": [
+        {
+          "description": "Get balance",
+          "has_body": false,
+          "method": "GET",
+          "name": "get-balance",
+          "params": [],
+          "path": "/balance"
+        }
+      ]
+    }
+  ],
+  "version": 1
+}
